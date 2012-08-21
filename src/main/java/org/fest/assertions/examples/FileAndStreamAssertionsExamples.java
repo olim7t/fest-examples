@@ -1,6 +1,7 @@
 package org.fest.assertions.examples;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.contentOf;
 
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -44,6 +45,9 @@ public class FileAndStreamAssertionsExamples extends AbstractAssertionsExamples 
     // compare content with a binary array
     binaryContent = "La Vérité Est Ailleurs".getBytes(turkishCharset.name());
     assertThat(xFileWithTurkishCharset).hasBinaryContent(binaryContent);
+    
+    // combine contentOf with a String assertion
+    assertThat(contentOf(xFile, "UTF-8")).matches("The Truth.*");
   }
   
   @Test
